@@ -32,6 +32,7 @@ class Author
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"author_read"})
      */
     private $id;
 
@@ -48,13 +49,14 @@ class Author
     private $Firstname;
 
     /**
+     * @Groups({"author_read", "author_write", "book_read"})
      * @ORM\Column(type="integer")
      */
     private $Age;
 
     /**
+     * @Groups({"author_read"})
      * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="Author")
-     * @Groups({"author_write", "book_read"})
      */
     private $books;
 

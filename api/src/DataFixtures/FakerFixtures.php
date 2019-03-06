@@ -14,7 +14,6 @@ class FakerFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
-
         // on créé 20 personnes
         for ($i = 0; $i < 20; $i++) {
             $author = new Author();
@@ -23,6 +22,12 @@ class FakerFixtures extends Fixture
             $author->setAge($faker->numberBetween($min = 15, $max = 99));
             $manager->persist($author);
         }
+
+            $user = new User();
+            $user->setEmail('johndoe');
+            $user->setPassword(password_hash("test", PASSWORD_BCRYPT));
+         //   $user->setRoles();
+            $manager->persist($user);
 
         /*for ($i = 0; $i < 20; $i++) {
             $book = new Book();

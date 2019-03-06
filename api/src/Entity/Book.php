@@ -57,6 +57,7 @@ class Book
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\CopyBook", mappedBy="Book")
+     * @Groups({"book_read"})
      */
     private $copyBooks;
 
